@@ -6,7 +6,8 @@ import { ConfigService } from '@nestjs/config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors(); //配置 允许跨域
+  /*配置 允许跨域 */
+  app.enableCors();
 
   // setupSwagger(app);
   const configService = app.get(ConfigService);

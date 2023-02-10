@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { LoggerMiddleware } from './common/middleware/logger';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
@@ -41,4 +42,8 @@ import { JwtAuthGuard } from './modules/auth/guard/jwt-auth.guard';
     },
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): any {
+    consumer.apply(LoggerMiddleware).forRoutes('');
+  }
+}

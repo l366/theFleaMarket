@@ -1,4 +1,3 @@
-import { JwtAuthGuard } from './../auth/guard/jwt-auth.guard';
 import {
   Controller,
   Get,
@@ -7,11 +6,14 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards,
+  Res,
+  HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Response } from 'express';
 
 @Controller('user')
 export class UserController {
@@ -21,11 +23,19 @@ export class UserController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
-  // @UseGuards(JwtAuthGuard)
-  @Get()
-  findAll() {
-    return this.userService.findAll();
-  }
+
+  /* 分页查询用户列表 */
+  // @Get()
+  // async findList(@Res() res: Response, @Query() query) {
+  //   console.log(query, 'query');
+
+  //   const users: User[] = await this.userService.getList();
+  //   if (users) {
+  //     res.status(HttpStatus.OK).json({ code: 200, data: users });
+  //   }
+
+  //   // return this.userService.findAll();
+  // }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

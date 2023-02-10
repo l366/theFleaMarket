@@ -5,6 +5,8 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   Generated,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 /* 表名为 user  */
@@ -39,11 +41,9 @@ export class UserEntity extends BaseEntity {
   @Column({ type: 'varchar', name: 'avatar', length: '255' })
   avatar?: string;
 
-  @Column({ type: 'timestamp', name: 'create_time' })
-  @IsDate()
-  create_time?: Date;
+  @CreateDateColumn({ name: 'create_time', nullable: true })
+  create_time: Date;
 
-  @Column({ type: 'timestamp', name: 'update_time' })
-  @IsDate()
-  update_time?: Date;
+  @UpdateDateColumn({ name: 'update_time', nullable: true })
+  update_time: Date | null;
 }
