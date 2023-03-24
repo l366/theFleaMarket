@@ -30,7 +30,7 @@ export class AuthController {
   async login(@Request() req) {
     return req.user;
   }
-
+  @Public()
   @Get('hello')
   test(@Request() req) {
     return 'helloworld';

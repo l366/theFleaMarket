@@ -1,3 +1,4 @@
+import { Public } from 'src/common/decorators/public.decorator';
 import { JwtAuthGuard } from './modules/auth/guard/jwt-auth.guard';
 import { Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
 import { AppService } from './app.service';
