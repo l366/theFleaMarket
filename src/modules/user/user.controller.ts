@@ -19,7 +19,7 @@ import { Public } from 'src/common/decorators/public.decorator';
 import { UserEntity } from './entities/user.entity';
 import { User } from '../../common/types/User/user.interface';
 import { FindManyOptions, Like } from 'typeorm';
-import { LoggingInterceptor } from 'src/common/intercepters/loggerInterceptor';
+import { LoggingInterceptor } from '../../common/intercepter/loggerInterceptor';
 @Controller('user')
 @UseInterceptors(LoggingInterceptor)
 export class UserController {

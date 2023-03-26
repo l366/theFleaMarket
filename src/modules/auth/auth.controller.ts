@@ -10,13 +10,16 @@ import {
   Delete,
   UseGuards,
   Request,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { Public } from 'src/common/decorators/public.decorator';
+import { LoggingInterceptor } from 'src/common/intercepter/loggerInterceptor';
 
 @Controller('auth')
+@UseInterceptors(LoggingInterceptor)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   // @UseGuards(LocalAuthGuard)

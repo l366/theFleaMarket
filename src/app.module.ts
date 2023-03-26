@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './modules/auth/guard/jwt-auth.guard';
 import { RedisModule } from 'nestjs-redis';
+import { ProductModule } from './modules/product/product.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { RedisModule } from 'nestjs-redis';
     /* 子模块 */
     UserModule,
     AuthModule,
+    ProductModule,
     ConfigModule,
   ],
   controllers: [AppController],

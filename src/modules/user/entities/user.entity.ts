@@ -1,4 +1,5 @@
 import { Contains, IsDate, IsEmail } from 'class-validator';
+import { ProductEntity } from 'src/modules/product/entities/product.entity';
 import {
   Entity,
   Column,
@@ -7,6 +8,7 @@ import {
   Generated,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 /* 表名为 user  */
@@ -46,4 +48,7 @@ export class UserEntity extends BaseEntity {
 
   @UpdateDateColumn({ name: 'update_time', nullable: true })
   update_time: Date | null;
+
+  @OneToMany(() => ProductEntity, (product) => product.seller)
+  products: ProductEntity[];
 }
